@@ -37,7 +37,7 @@ def home():
 
 def grafico_linhas():
     st.title("grafico de linhas")
-    data = pd.read_csv("matplot\data\Pokemon.csv")
+    data = pd.read_csv("Pokemon.csv")
     fig = plt.figure(figsize=(10,10)) 
     data.groupby('generation')['hp'].mean().plot(marker='o')
     plt.title('Tendência de HP dos Pokemon ao Longo das Gerações')
@@ -49,7 +49,7 @@ def grafico_linhas():
     #aba para mosrar o codigo gerador do grafico 
     with st.expander('Código para gerar o gráfico'):
         with st.echo():
-            data = pd.read_csv("matplot\data\Pokemon.csv")
+            data = pd.read_csv("Pokemon.csv")
             fig = plt.figure(figsize=(10,10)) 
             data.groupby('generation')['hp'].mean().plot(marker='o')
             plt.title('Tendência de HP dos Pokemon ao Longo das Gerações')
@@ -59,7 +59,7 @@ def grafico_linhas():
             
             
 def grafico_barras():
-    data = pd.read_csv("matplot\data\Pokemon.csv")
+    data = pd.read_csv("Pokemon.csv")
     st.title("grafico de barras")
     fig=plt.figure(figsize=(10,8))
     type_counts = pd.concat([data['type1'], data['type2']]).value_counts()
@@ -74,7 +74,7 @@ def grafico_barras():
     #aba para mosrar o codigo gerador do grafico 
     with st.expander('Código para gerar o gráfico'):
         with st.echo():
-            data= pd.read_csv("matplot\data\Pokemon.csv")
+            data= pd.read_csv("Pokemon.csv")
             fig=plt.figure(figsize=(10,8))
             type_counts = pd.concat([data['type1'], data['type2']]).value_counts()
             type_counts.plot(kind='bar')
@@ -85,7 +85,7 @@ def grafico_barras():
             plt.grid(axis='y')  
             
 def grafico_boxplot():
-    data = pd.read_csv("matplot\data\Pokemon.csv")
+    data = pd.read_csv("Pokemon.csv")
     st.title("grafico boxplot")
     fig=plt.figure(figsize=(10,8))
     stats = data[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
@@ -99,7 +99,7 @@ def grafico_boxplot():
     #aba para mosrar o codigo gerador do grafico 
     with st.expander('Código para gerar o gráfico'):
         with st.echo():
-            data= pd.read_csv("matplot\data\Pokemon.csv")
+            data= pd.read_csv("Pokemon.csv")
             fig=plt.figure(figsize=(10,8))
             stats = data[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
             stats.boxplot()
@@ -110,7 +110,7 @@ def grafico_boxplot():
             
 def grafico_pizza():
     st.title("Grafico de pizza")
-    dados= pd.read_csv("matplot\data\Pokemon.csv")   
+    dados= pd.read_csv("Pokemon.csv")   
     legendary_counts = dados['legendary'].value_counts()
     fig=plt.figure(figsize=(10,13))
     plt.pie(legendary_counts, labels=['Não Lendário', 'Lendário'], autopct='%1.1f%%', startangle=140)
@@ -123,7 +123,7 @@ def grafico_pizza():
     #aba para mosrar o codigo gerador do grafico    
     with st.expander('Código para gerar o gráfico'):
         with st.echo():
-            dados= pd.read_csv("matplot\data\Pokemon.csv")
+            dados= pd.read_csv("Pokemon.csv")
             legendary_counts = dados['legendary'].value_counts()
             fig=plt.figure(figsize=(10,13))
             plt.pie(legendary_counts, labels=['Não Lendário', 'Lendário'], autopct='%1.1f%%', startangle=140)
