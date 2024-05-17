@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import mpld3
 import streamlit.components.v1 as components
 import streamlit as st
 import pandas as pd
@@ -28,11 +27,6 @@ def home():
     Os dados utilizados são provenientes do conjunto de dados de Pokemon disponível no Kaggle.
     """)
 
-    st.write("## Feedback")
-    st.write("""
-    Se você tiver alguma sugestão, feedback ou encontrar algum problema com o aplicativo, por favor, sinta-se à vontade para entrar em contato conosco.
-    Sua opinião é muito importante para nós!
-    """)
 
 
 def grafico_linhas():
