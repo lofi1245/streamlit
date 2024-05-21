@@ -2,6 +2,12 @@ import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 import streamlit as st
 import pandas as pd
+
+#função para carregar os dados do dataframe so uma vez 
+def carregar_dados():
+    data = pd.read_csv("Pokemon.csv")
+    return data
+
 # Página inicial
 def home():
     st.title('Bem-vindo ao Projeto Pokemon Data Visualization')
@@ -31,7 +37,7 @@ def home():
 
 def grafico_linhas():
     st.title("Gráfico de linhas")
-    data = pd.read_csv("Pokemon.csv")
+    data = carregar_dados()
     fig = plt.figure(figsize=(10,10)) 
     data.groupby('generation')['hp'].mean().plot(marker='o')
     plt.title('Tendência de HP dos Pokemon ao Longo das Gerações')
@@ -53,7 +59,7 @@ def grafico_linhas():
             
             
 def grafico_barras():
-    data = pd.read_csv("Pokemon.csv")
+    data = carregar_dados()
     st.title("Gráfico de barras")
     fig=plt.figure(figsize=(10,8))
     type_counts = pd.concat([data['type1'], data['type2']]).value_counts()
@@ -79,7 +85,7 @@ def grafico_barras():
             plt.grid(axis='y')  
             
 def grafico_boxplot():
-    data = pd.read_csv("Pokemon.csv")
+    data = carregar_dados()
     st.title("Gráfico boxplot")
     fig=plt.figure(figsize=(10,8))
     stats = data[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
@@ -104,7 +110,7 @@ def grafico_boxplot():
             
 def grafico_pizza():
     st.title("Gráfico de pizza")
-    dados= pd.read_csv("Pokemon.csv")   
+    dados= carregar_dados()   
     legendary_counts = dados['legendary'].value_counts()
     fig=plt.figure(figsize=(10,10))
     plt.pie(legendary_counts, labels=['Não Lendário', 'Lendário'], autopct='%1.1f%%', startangle=140)
