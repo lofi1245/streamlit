@@ -39,6 +39,9 @@ def grafico_linhas():
     st.title("Gráfico de linhas")
     data = carregar_dados()
     fig = plt.figure(figsize=(10,10)) 
+    
+    # Agrupa os dados pelo valor da coluna 'generation' e calcula a média dos valores da coluna 'hp' para cada grupo.
+    # Em seguida, plota esses valores médios em um gráfico, usando um marcador 'o' para cada ponto.
     data.groupby('generation')['hp'].mean().plot(marker='o')
     plt.title('Tendência de HP dos Pokemon ao Longo das Gerações')
     plt.xlabel('Geração')
@@ -62,6 +65,9 @@ def grafico_barras():
     data = carregar_dados()
     st.title("Gráfico de barras")
     fig=plt.figure(figsize=(10,8))
+    
+    # Concatena as colunas 'type1' e 'type2' da DataFrame 'data', e então conta a frequência de cada valor
+    # nas duas colunas combinadas, resultando em uma série com a contagem de cada tipo
     type_counts = pd.concat([data['type1'], data['type2']]).value_counts()
     type_counts.plot(kind='bar')
     plt.title('Distribuição de Pokemon por Tipo')
@@ -73,6 +79,7 @@ def grafico_barras():
     
     #aba para mosrar o codigo gerador do grafico 
     with st.expander('Código para gerar o gráfico'):
+        #exibe o codigo como texto 
         with st.echo():
             data= pd.read_csv("Pokemon.csv")
             fig=plt.figure(figsize=(10,8))
@@ -113,6 +120,11 @@ def grafico_pizza():
     dados= carregar_dados()   
     legendary_counts = dados['legendary'].value_counts()
     fig=plt.figure(figsize=(10,10))
+    
+    # Cria um gráfico de pizza a partir dos dados em 'legendary_counts'.
+    # Os rótulos das fatias são definidos como 'Não Lendário' e 'Lendário'.
+    # 'autopct' é usado para mostrar a porcentagem de cada fatia no gráfico.
+    # 'startangle' define o ângulo inicial do gráfico, aqui definido como 140 graus para melhor visualização.
     plt.pie(legendary_counts, labels=['Não Lendário', 'Lendário'], autopct='%1.1f%%', startangle=140)
     plt.title('Proporção de Pokemon Lendários')
     plt.axis('equal')
