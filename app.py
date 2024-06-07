@@ -145,6 +145,9 @@ def main():
         "Boxplot": grafico_boxplot,
         "Pizza": grafico_pizza
     }
+    
+    # Adiciona uma caixa de seleção na barra lateral com as opções das páginas disponíveis
+    # e armazena a seleção do usuário na variável 'selection'.
     selection = st.sidebar.selectbox("Ir para", list(pages.keys()))
     
     st.sidebar.title("Sobre")
